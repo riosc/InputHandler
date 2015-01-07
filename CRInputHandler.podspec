@@ -8,9 +8,9 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "InputHandler"
-  s.version          = "0.1.0"
-  s.summary          = "Input handler is a helper library that facilitates set on focus an input like UITextField or UITextView in your iOS application."
+  s.name             = "CRInputHandler"
+  s.version          = "0.1.1"
+  s.summary          = "Inputhandler is a helper library that facilitates set on focus an input like UITextField or UITextView in your iOS application."
   s.description      = <<-DESC
                        InputHandler lets manage correctly the keyboard when user taps over an input. Also this class manages the keyboard hiding when user tap outside of input.
                        * Markdown format.
