@@ -1,4 +1,4 @@
-# InputHandler
+# CRInputHandler
 
 [![CI Status](http://img.shields.io/travis/Carlos Rios/InputHandler.svg?style=flat)](https://travis-ci.org/Carlos Rios/InputHandler)
 [![Version](https://img.shields.io/cocoapods/v/InputHandler.svg?style=flat)](http://cocoadocs.org/docsets/InputHandler)

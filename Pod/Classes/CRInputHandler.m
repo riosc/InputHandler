@@ -25,13 +25,14 @@
 
 #define SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 #define kKeyboardPaddingTop 100.0f
+#define kWindowPaddingTop 50.0f
 
 @interface CRInputHandler()<UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) UIScrollView * scrollView;
-@property (nonatomic, strong) UIView * rootView;
+@property (nonatomic, weak) UIScrollView * scrollView;
+@property (nonatomic, weak) UIView * rootView;
 @property (nonatomic, assign) CGPoint scrollOffSet;
-@property (nonatomic, strong) UIView * current;
+@property (nonatomic, weak) UIView * current;
 @property (nonatomic, assign, getter = keyboardIsOpen) BOOL keyboardOpen;
 @property (nonatomic, assign) CGFloat keyboardHeight;
 @property (nonatomic, weak) NSMutableArray * inputs;
@@ -62,12 +63,16 @@
     [self registerKeyboardNotifications];
 }
 
+/*
+ * A    
+ */
 - (void) addTapRecognizer
 {
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(screenTapped)];
     [tap setDelegate:self];
     [_rootView addGestureRecognizer:tap];
 }
+
 
 - (void) screenTapped
 {
@@ -166,9 +171,14 @@
     CGPoint inputPositionOnScreen   = [view.superview convertPoint:view.frame.origin toView:_rootView];
     
     CGFloat yPosBottomInput         = inputPositionOnScreen.y + view.frame.size.height;
-    if (yPosBottomInput > yPosKeyboard) {
+    if (yPosBottomInput > yPosKeyboard)
+    {
         CGFloat requiredOffset      = yPosBottomInput  - yPosKeyboard;
         [_scrollView setContentOffset:CGPointMake(0, _scrollView.contentOffset.y + requiredOffset) animated:YES];
+    }else if (yPosKeyboard - yPosBottomInput > kWindowPaddingTop)
+    {
+        CGFloat offsetExtra = yPosKeyboard - yPosBottomInput - kWindowPaddingTop;
+        [_scrollView setContentOffset:CGPointMake(0, _scrollView.contentOffset.y - offsetExtra) animated:YES];
     }
 }
 

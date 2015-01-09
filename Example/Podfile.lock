@@ -1,14 +1,14 @@
 PODS:
-  - InputHandler (0.1.0)
+  - CRInputHandler (0.1.1)
 
 DEPENDENCIES:
-  - InputHandler (from `../`)
+  - CRInputHandler (from `../`)
 
 EXTERNAL SOURCES:
-  InputHandler:
+  CRInputHandler:
     :path: ../
 
 SPEC CHECKSUMS:
-  InputHandler: 1e389ec139a5cc1c261273a73bb1772f91883b2c
+  CRInputHandler: 22367c604d80160b73726a4f3a3f8d4804b23f30
 
 COCOAPODS: 0.34.4
