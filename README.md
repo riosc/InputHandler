@@ -1,6 +1,9 @@
 # CRInputHandler
 
-
+[![CI Status](http://img.shields.io/travis/Carlos Rios/CRInputHandler.svg?style=flat)](https://travis-ci.org/Carlos Rios/CRInputHandler)
+[![Version](https://img.shields.io/cocoapods/v/CRInputHandler.svg?style=flat)](http://cocoadocs.org/docsets/CRInputHandler)
+[![License](https://img.shields.io/cocoapods/l/CRInputHandler.svg?style=flat)](http://cocoadocs.org/docsets/CRInputHandler)
+[![Platform](https://img.shields.io/cocoapods/p/CRInputHandler.svg?style=flat)](http://cocoadocs.org/docsets/CRInputHandler)
 
 CRInputHandler is a UI Helper class that facilitates the re-location (if needed) of inputs texts like
 `UITextField` and `UITextView` in iOS applications when it is on focus state. If have worked with forms in iOS
