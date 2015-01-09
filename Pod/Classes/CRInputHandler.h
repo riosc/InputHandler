@@ -26,7 +26,7 @@
 
 /**
  * CRInputHandler is a UI Helper class that facilitates the re-location (if needed) of inputs texts like
- * `UITextField` and `UITextView` in iOS applications. If have worked with forms in iOS
+ * `UITextField` and `UITextView` in iOS applications when it is on focus state. If have worked with forms in iOS
  * aplications before, you could note that sometimes the iOS keyboard overlap the 
  * input text making a little painful the user experience. So this
  * class helps you to keep always visible the input when it is on focus.
@@ -55,7 +55,7 @@
 /**
  *  Init a CRInputHandler class with a container.
  *
- *  @param container UIScrollview that contains a inputs text elements
+ *  @param container UIScrollview that contains the inputs text elements
  *
  *  @return CRInputHandler instance
  */
