@@ -68,19 +68,24 @@ _inputHandler   = [[CRInputHandler alloc] initWithContainer:container];
 
 }
 ```
-If you want take a look to Example project, so to run the example project, 
-clone the repo, and run `pod install` from the Example directory first.
+If you want take a look to Example project. To run the example project, 
+clone the repo, and run `pod update` or `pod install` from the Example directory first.
 
-## Requirements
+## Requirements 
 
 iOS 6 or higher
 
 ## Installation
 
-InputHandler is available through [CocoaPods](http://cocoapods.org). To install
+CRInputHandler is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
     pod "CRInputHandler"
+
+and import it in your class:
+```Objective-C
+#import <CRInputHandler/CRInputHandler.h>
+```
 
 ## Author
 
