@@ -16,6 +16,13 @@ the keyboard.
 This class works observing the events of `UITextField` and `UITextView` classes,
 so it does not override any delegate method of these UIKit Component.
 
+### Life WITH CRInputHandler
+![input handler image yes](https://github.com/riosc/InputHandler/blob/master/Example/InputHandler/Images/YES.gif "Wit CRInputHandler")
+
+### Life WITHOUT CRInputHandler
+![input handler image not](https://github.com/riosc/InputHandler/blob/master/Example/InputHandler/Images/NOT.gif "Without CRInputHandler")
+
+
 ## Usage
 
 You need to put your inputs texts inside a `UIScrollView` and use the `-(id)initWithContainer:`
@@ -66,7 +73,7 @@ clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
 
-iOS 7 or higher
+iOS 6 or higher
 
 ## Installation
 
