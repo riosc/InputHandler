@@ -24,10 +24,12 @@
 #import "CRInputHandler.h"
 
 #define SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
-//#define kKeyboardPaddingTop 100.0f
-//#define kWindowPaddingTop 50.0f
+#define SCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 
 @interface CRInputHandler()<UIGestureRecognizerDelegate>
+{
+    CGRect keyboardRect;
+}
 
 @property (nonatomic, weak) UIScrollView * scrollView;
 @property (nonatomic, weak) UIView * rootView;
@@ -48,7 +50,7 @@
     if (self) {
         _scrollView     = scroll;
         _rootView       = [self rootView:_scrollView];
-        _keyboardPaddingTop = 1000.f;
+        _keyboardPaddingTop = 100.f;
         _windowPaddingTop   = 50.0f;
         [self setup];
     }
@@ -146,7 +148,9 @@
 
 - (void)keyboardWillShow:(NSNotification*)notification
 {
-    _keyboardHeight = CGRectGetHeight([[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue]) + _keyboardPaddingTop;
+    keyboardRect = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    _keyboardHeight = (_landscapeMode) ? CGRectGetWidth(keyboardRect) : CGRectGetHeight(keyboardRect);
+    _keyboardHeight +=_keyboardPaddingTop;
     
     if(!_keyboardOpen) _scrollOffSet = [_scrollView contentOffset];
     [self setOffsetAccordingView:_current];
@@ -169,10 +173,12 @@
 
 - (void) setOffsetAccordingView:(UIView *)view
 {
-    CGFloat yPosKeyboard            = SCREEN_HEIGHT - _keyboardHeight;
+    
+    CGFloat yPosKeyboard            = ((_landscapeMode) ? SCREEN_WIDTH : SCREEN_HEIGHT) - _keyboardHeight;
     CGPoint inputPositionOnScreen   = [view.superview convertPoint:view.frame.origin toView:_rootView];
     
     CGFloat yPosBottomInput         = inputPositionOnScreen.y + view.frame.size.height;
+    
     if (yPosBottomInput > yPosKeyboard)
     {
         CGFloat requiredOffset      = yPosBottomInput  - yPosKeyboard;
@@ -183,6 +189,7 @@
         [_scrollView setContentOffset:CGPointMake(0, _scrollView.contentOffset.y - offsetExtra) animated:YES];
     }
 }
+
 
 - (void) dealloc
 {

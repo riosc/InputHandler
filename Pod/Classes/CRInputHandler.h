@@ -85,4 +85,9 @@
  */
 @property (nonatomic, assign) CGFloat windowPaddingTop;
 
+/**
+ *  Default mode to manage the keyboard. By deafult is portrait
+ */
+@property (nonatomic, assign, getter=isLandscapeMode) BOOL landscapeMode;
+
 @end
