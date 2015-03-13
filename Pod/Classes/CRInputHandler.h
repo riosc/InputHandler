@@ -43,8 +43,9 @@
  * 
  * UIView
  * |-UIScrollView
- * | |--UITextField
- * | |--UITextView
+ * |--UIView
+ * |  | |-UITextField
+ * |  | |-UITextView
  * |--
  *
  * The main goals is set the inputs views inside UIScrollView container.
@@ -69,5 +70,19 @@
  *  @param fields A NSArray containing all inputs to be registered
  */
 - (void) setFields:(NSArray *)fields;
+/**
+ *  let move the on top of the keyboard if it is too far.
+ */
+@property (nonatomic, assign) BOOL closinAtTop;
+
+/**
+ *  Minumun distance from Keyboard to on focused input view. by default is 100
+ */
+@property (nonatomic, assign) CGFloat keyboardPaddingTop;
+
+/**
+ *  Minumun distance from top layout guide to on focused input view. By default is 50;
+ */
+@property (nonatomic, assign) CGFloat windowPaddingTop;
 
 @end

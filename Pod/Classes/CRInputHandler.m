@@ -24,8 +24,8 @@
 #import "CRInputHandler.h"
 
 #define SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
-#define kKeyboardPaddingTop 100.0f
-#define kWindowPaddingTop 50.0f
+//#define kKeyboardPaddingTop 100.0f
+//#define kWindowPaddingTop 50.0f
 
 @interface CRInputHandler()<UIGestureRecognizerDelegate>
 
@@ -48,6 +48,8 @@
     if (self) {
         _scrollView     = scroll;
         _rootView       = [self rootView:_scrollView];
+        _keyboardPaddingTop = 1000.f;
+        _windowPaddingTop   = 50.0f;
         [self setup];
     }
     
@@ -144,7 +146,7 @@
 
 - (void)keyboardWillShow:(NSNotification*)notification
 {
-    _keyboardHeight = CGRectGetHeight([[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue]) + kKeyboardPaddingTop;
+    _keyboardHeight = CGRectGetHeight([[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue]) + _keyboardPaddingTop;
     
     if(!_keyboardOpen) _scrollOffSet = [_scrollView contentOffset];
     [self setOffsetAccordingView:_current];
@@ -175,9 +177,9 @@
     {
         CGFloat requiredOffset      = yPosBottomInput  - yPosKeyboard;
         [_scrollView setContentOffset:CGPointMake(0, _scrollView.contentOffset.y + requiredOffset) animated:YES];
-    }else if (yPosKeyboard - yPosBottomInput > kWindowPaddingTop)
+    }else if (yPosKeyboard - yPosBottomInput > _keyboardPaddingTop && _closinAtTop)
     {
-        CGFloat offsetExtra = yPosKeyboard - yPosBottomInput - kWindowPaddingTop;
+        CGFloat offsetExtra = yPosKeyboard - yPosBottomInput - _windowPaddingTop;
         [_scrollView setContentOffset:CGPointMake(0, _scrollView.contentOffset.y - offsetExtra) animated:YES];
     }
 }

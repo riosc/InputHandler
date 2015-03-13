@@ -32,6 +32,8 @@
     
     _allInputs      = @[firstNameTF, lastNameTF, bioTV, emailTF, birthdayTF];
     _inputHandler   = [[CRInputHandler alloc] initWithContainer:container];
+//    _inputHandler.closinAtTop = YES;
+    
     [_inputHandler setFields:_allInputs];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -60,7 +62,7 @@
     return YES;
 }
 
-//selects the next fields from @param input
+//return the next fields from @param input
 - (id) nextInputFromInput:(id)input
 {
     NSUInteger index = [_allInputs indexOfObject:input];
