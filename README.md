@@ -29,11 +29,12 @@ You need to put your inputs texts inside a `UIScrollView` and use the `-(id)init
 to init the class. Your view herarchy should looks similar like this:
 
 ```
-UIView
-|-UIScrollView
-| |--UITextField
-| |--UITextView
-|--
+ * UIView
+ * |-UIScrollView
+ * |--UIView
+ * |  | |-UITextField
+ * |  | |-UITextView
+ * |--
 
 ```
 
